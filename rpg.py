@@ -7,30 +7,28 @@ def showInstructions():
   print('''
 RPG Game
 ========
-    _____________________________________________
-    |                         |                 |
-    |                         |                 |
-    |                                           |                     N
-    |                               Dining      |                     |
-    |           Hall          |                 |                 W<----->E
-    |                         |_______    ______|                     |
-    |                         |                                       S
-    |__________     __________|
-    |                         |
-    |                         |
-    |
-    |        Kitchen                     Garden
-    |                         |
-    |                         |
-    |_________________________|
-
-
+             __________________________
+            |              |           |
+            |              |           |
+            |              |           |                             N
+            |                          |                             |
+            |     Hall        Dining   |                         W<----->E
+            |                          |                             |
+            |              |           |                             S
+            |              |___________|
+            |              |           |
+            |____      ____|           |
+            |              |   Garden  |
+            |                          |
+            |    Kitchen               |
+            |              |           |
+            |______________|___________|
 
 
 
 
 Get to the Garden with the key
-Avoid Monsters
+Kill the Monster
 
 Commands:
   go [direction]
@@ -53,31 +51,23 @@ inventory = []
 
 #a dictionary linking a room to other rooms
 rooms = {
-
-            'Hall' : {
-                  'south' : 'Kitchen',
-                  'east'  : 'Dinning Room'
-                },
-
-            'Kitchen' : {
+        'Kitchen' : {
                   'north' : 'Hall',
                   'east'  : 'Garden',
                   'item'  : 'Monster'
                 },
         'Hall'  :{
-               'south' : 'Kitchen',
-               'east'  : 'Dinning Room',
-               'item'  : 'key'
+                   'south' : 'Kitchen',
+                   'east'  : 'Dinning Room',
+                   'item'  : 'key'
         },
         'Dinning Room' :{
                       'west': 'Hall',
-                      'south': 'Garden',
                       'item' : 'potion'
         },
 
         'Garden' :{
-          'north' : 'Dinning Room',
-          'west'  : 'Kitchen'
+                    'west'  : 'Kitchen'
         }
 
          }
@@ -138,6 +128,6 @@ while True:
           break
 
   #if player wins when they get to garden
-  if currentRoom=='Garden' and 'key' in inventory and 'potion' in inventory:
+  if currentRoom=='Garden' and 'key' in inventory:
     print('You Win ! :)')
     break
